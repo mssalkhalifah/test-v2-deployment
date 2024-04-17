@@ -17,3 +17,9 @@ app.get("/hello", (req, res) => {
   res.setHeader("Content-Type", "text/plain");
   res.end("Hello within hello!\n");
 });
+
+app.get("/xss", (req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/html");
+  res.end(`<p>${req.query.q}</p>`);
+});

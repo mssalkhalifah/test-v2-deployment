@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: hello-world
+  name: hello-world-ingress
+spec:
+  rules:
+    - host: hello-world.bpo-hq.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: hello-world-service
+                port:
+                  number: 80
